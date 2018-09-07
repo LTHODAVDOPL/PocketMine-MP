@@ -103,7 +103,6 @@ class ItemEntity extends Entity{
 			}
 		}
 
-
 		return $hasUpdate;
 	}
 
