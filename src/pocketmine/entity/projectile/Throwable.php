@@ -35,6 +35,7 @@ abstract class Throwable extends Projectile{
 	protected $drag = 0.01;
 
 	protected function onHitBlock(Block $blockHit, RayTraceResult $hitResult) : void{
+		parent::onHitBlock($blockHit, $hitResult);
 		$this->flagForDespawn();
 	}
 }
