@@ -39,6 +39,7 @@ use pocketmine\entity\projectile\Arrow;
 use pocketmine\entity\projectile\Egg;
 use pocketmine\entity\projectile\EnderPearl;
 use pocketmine\entity\projectile\ExperienceBottle;
+use pocketmine\entity\projectile\Projectile;
 use pocketmine\entity\projectile\Snowball;
 use pocketmine\entity\projectile\SplashPotion;
 use pocketmine\event\entity\EntityDamageEvent;
@@ -1027,6 +1028,10 @@ abstract class Entity extends Location implements Metadatable, EntityIds{
 			}
 		}
 
+		//TODO: HACK! THIS SHOULD BE REMOVED ONCE DEBUGGED
+		if($this instanceof Projectile and ($this->age + $tickDiff) > 0x7fff){
+			throw new \InvalidStateException("Tried to increase " . get_class($this) . " age from $this->age to " . ($this->age + $tickDiff));
+		}
 		$this->age += $tickDiff;
 		$this->ticksLived += $tickDiff;
 
